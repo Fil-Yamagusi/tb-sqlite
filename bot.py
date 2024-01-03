@@ -14,7 +14,7 @@ __author__ = 'Firip Yamagusi'
 
 # import re
 from time import sleep, time, strftime
-from random import shuffle, seed
+from random import seed
 
 from telebot import TeleBot
 from telebot import types
@@ -26,6 +26,9 @@ seed(time())
 
 bot_name = "word_constructor_bot"
 bot = TeleBot(TOKEN)
+
+# Ссылка на Русский орфографический словарь
+r_dict = 'https://gramota.ru/biblioteka/slovari/russkij-orfograficheskij-slovar'
 
 # Быстрая работа с пользователями. Возможно, не пригодится
 users = {}
@@ -67,13 +70,12 @@ def handle_start(m: Message):
     bot.send_message(
         m.from_user.id,
         f"<b>Отличная разминка для ума, {m.from_user.first_name}!</b>\n\n"
-        "Составь из букв заданного слова много других. "
-        "Например, из слова <b>КАРАТЕ</b> можно составить слова "
+        "Составь из букв заданного слова много других слов.\n"
+        "Например, из слова <b>КАРАТЕ</b> получатся "
         "<i>река</i>, <i>карат</i>, <i>трак</i>,... \n\n"
-        "Правила простые:\n"
+        "<b>Правила простые</b>:\n"
         "- Имя существительное, длиннее 2 букв, в ед.числе (если есть)\n"
-        "- Слово должно быть в <a href='https://gramota.ru/biblioteka/slovari/"
-        "russkij-orfograficheskij-slovar'>Русском "
+        f"- Слово должно быть в <a href='{r_dict}'>Русском "
         "орфографическом словаре</a>\n"
         "- и &lt;&gt; й, е &lt;&gt; ё, ь &lt;&gt; ъ\n\n"
         "Подробнее - в справке /help",
@@ -96,11 +98,11 @@ def handle_help(m: Message):
         "У этой игры разные названия: Наборщик, Конструктор, Перебуква или "
         "даже Анаграмма (хотя обычно анаграмма означает другое).\n\n"
         "Например, из слова <b>КАРАТЕ</b> можно составить слова "
-        "<i>река</i>, <i>карат</i>, <i>трак</i>,... \n\n"
-        "Правила простые:\n"
+        "<i>река</i>, <i>карат</i>, <i>трак</i>, <i>тара</i>, "
+        "<i>каре</i>, <i>карт</i>, <i>кета</i>, <i>теракт</i>\n\n"
+        "<b>Правила простые</b>:\n"
         "- Имя существительное, длиннее 2 букв, в ед.числе (если есть)\n"
-        "- Слово должно быть в <a href='https://gramota.ru/biblioteka/slovari/"
-        "russkij-orfograficheskij-slovar'>Русском "
+        f"- Слово должно быть в <a href='{r_dict}'>Русском "
         "орфографическом словаре</a>\n"
         "- и &lt;&gt; й, е &lt;&gt; ё, ь &lt;&gt; ъ\n\n"
         "При входе в игру я задаю тебе случайное слово. Его можно поменять "
@@ -122,4 +124,4 @@ while True:
         bot.polling(none_stop=True)
     except Exception as ex:
         print(ex)
-        time.sleep(10)
+        sleep(10)
