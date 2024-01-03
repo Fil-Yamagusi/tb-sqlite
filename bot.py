@@ -1,7 +1,7 @@
 #!/usr/bin/env python3.12
 # -*- coding: utf-8 -*-
 """2024-01-03 Fil - Future code Yandex.Practicum
-Исопльзование БД sqlite
+Использование БД sqlite
 Игра про составление слов из длинного слова с рейтингом
 
 @word_constructor_bot
@@ -38,13 +38,13 @@ def check_user(uid):
     print(users)
 
 
-# Пустое меню, пригодится в конце анкеты.
+# Пустое меню, может пригодится
 hideKeyboard = types.ReplyKeyboardRemove()
 
 # Синонимы пункта Справка (помощь и т.п.)
 menu_help = ['Помощь', 'Справка', 'Описание',]
 
-# Стартовое меню, пригодится в конце анкеты.
+# Основное меню
 menu_main = {
     'add_word': 'Придумал слово!',
     'change_task': 'Изменить задание',
@@ -113,7 +113,6 @@ def handle_help(m: Message):
         parse_mode="HTML",
         reply_markup=keyboard_main
     )
-
 
 
 print(strftime("%F %T"))
