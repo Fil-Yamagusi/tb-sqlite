@@ -10,7 +10,7 @@ https://t.me/word_constructor_bot
 """
 
 __version__ = '0.1'
-__author__ = 'Fil Yamagusi'
+__author__ = 'Firip Yamagusi'
 
 # import re
 from time import sleep, time, strftime
